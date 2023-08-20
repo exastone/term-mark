@@ -45,8 +45,6 @@ def main():
     if args.show:
         term_marks = marshal_term_marks()
         fuzzy_search.display(term_marks)
-        # for term_mark in term_marks:
-        #     print(term_mark)
 
 
 if __name__ == "__main__":

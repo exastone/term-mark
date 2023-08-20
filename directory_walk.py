@@ -49,7 +49,6 @@ def walk_subdirectories(paths, include_files=False, search_depth=None):
     return results
 
 
-#
 def contains_item(directory, name):
     return name in os.listdir(directory)
 
