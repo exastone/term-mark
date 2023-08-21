@@ -1,16 +1,19 @@
 import os
-
 from InquirerPy import inquirer
+from InquirerPy.base.control import Choice
 
 
 def display(objects):
     # Extract project names from the list of Project objects
-    project_names = [project.project_name for project in objects]
     projects = {project.project_name: project.project_path for project in objects}
+    choices = [
+        Choice(project.project_name, name=project.project_name, instruction=project.project_path)
+        for project in objects
+    ]
 
     project_selection = inquirer.fuzzy(
-        message="Book Marked Projects:",
-        choices=list(projects.keys()),
+        message="Term marks:",
+        choices=choices,
         instruction="[⏎] to select",
         long_instruction="\n"
     ).execute()
