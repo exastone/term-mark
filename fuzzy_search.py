@@ -19,7 +19,7 @@ def display(objects):
     ).execute()
 
     selected_path = projects[project_selection]
-    str_cmd = f"cd {selected_path}\n"
+    str_cmd = f"cd \"{selected_path}\"\n"
 
     home_path = os.environ.get('HOME')
     file_path = os.path.join(home_path, '.tmp', 'termmark.tmp')
