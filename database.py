@@ -37,6 +37,26 @@ def remove_project_by_name(conn, project_name):
     conn.commit()
 
 
+def remove_project_by_path(conn, project_path):
+    cursor = conn.cursor()
+    cursor.execute('''
+        DELETE FROM projects
+        WHERE project_path = ?
+    ''', (project_path,))
+    # Commit the changes
+    conn.commit()
+
+
+# check if directory exists
+def directory_exists(conn, project_path):
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT COUNT(*) FROM projects WHERE project_path = ?
+    ''', (project_path,))
+    count = cursor.fetchone()[0]
+    return count > 0
+
+
 def fetch_projects(conn):
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM projects')
