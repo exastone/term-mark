@@ -1,4 +1,4 @@
-# term-mark | Bookmarks for your terminal
+# term-mark | bookmarks for your terminal 📚
 
 Bookmark directories to quickly jump to them later
 
