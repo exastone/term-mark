@@ -1,10 +1,14 @@
-# term-mark
+# term-mark | Bookmarks for your terminal
+
+Bookmark directories to quickly jump to them later
+
+![](https://github.com/exastone/term-mark/assets/demo-mark-long-path.gif)
 
 ```
 tm --help
-usage: main.py [-h] [--show] [--mark] [--find] [--depth] [path]
+usage: tm [-h] [--show] [--mark] [--find] [--depth] [--remove] [path]
 
-A simple command-line argument example
+  Term-mark, bookmarks for your terminal 
 
 positional arguments:
   path           Search path (default '.')
@@ -14,4 +18,6 @@ options:
   --show, -S     Show bookmarked projects
   --mark, -M     Toggle bookmark for current directory
   --find, -F     Find directories containing VSC (.git)
-  --depth , -L   Search depth (default is 2)```
+  --depth , -L   Search depth, used with '--find' (default is 2)
+  --remove, -R   Remove bookmarks menu
+  ```
