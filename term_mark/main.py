@@ -1,15 +1,14 @@
 import os
 import sys
 
-import cmd_parse
-import menus
-from constants import TERMINATE, PROCEED
-from tm_functions import discover, marshal_term_marks, toggle_mark, remove_bookmarks
+from term_mark import menus, cmd_parse
+from term_mark.constants import TERMINATE, PROCEED
+from term_mark.tm_functions import discover, marshal_term_marks, toggle_mark, remove_bookmarks
 
 
 def main():
     os.environ["TM_PATH"] = os.path.dirname(os.path.abspath(__file__))
-    os.environ["TM_PATH_DB"] = os.path.join(os.environ["TM_PATH"], "database", "term_mark.sqlite")
+    os.environ["TM_PATH_DB"] = os.path.join(os.environ["TM_PATH"], "term_mark.sqlite")
 
     args = cmd_parse.parse_args()
 

@@ -3,7 +3,8 @@ import sys
 
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
-from constants import TERMINATE
+
+from term_mark.constants import TERMINATE
 
 
 def write_selected_path_to_file(selected_path):

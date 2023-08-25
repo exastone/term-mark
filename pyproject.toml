@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["term_mark"]
+
+[project]
+name = "term-mark"
+version = "0.1.0"
+authors = [
+    { name = "Andrew Stone" },
+]
+description = "Bookmarks for your terminal"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "InquirerPy @ git+https://github.com/kazhala/InquirerPy.git@e3acfcf907fd6a4fc767ef74cefd49031bce976c"
+]
+
+[project.scripts]
+term-mark = "term_mark.main:main"
+
+[project.urls]
+"Homepage" = "https://github.com/exastone/term-mark"
