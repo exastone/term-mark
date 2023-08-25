@@ -2,7 +2,7 @@
 
 Bookmark directories to quickly jump to them later
 
-![](https://github.com/exastone/term-mark/assets/demo-mark-long-path.gif)
+![Jump to path](https://github.com/exastone/term-mark/assets/demo-mark-long-path.gif)
 
 ```
 tm --help
