@@ -1,3 +1,4 @@
+import os
 import sqlite3
 
 
@@ -17,12 +18,13 @@ def create_table(conn):
 
 
 # add project row
-def insert_project(conn, project_name, project_path, atime, mtime, is_git):
+def insert_project(conn, proj):
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO projects (project_name, project_path, atime, mtime, is_git)
         VALUES (?, ?, ?, ?, ?)
-    ''', (project_name, project_path, atime, mtime, is_git))
+    ''', (proj["project_name"], proj["project_path"], proj["atime"], proj["mtime"], proj["is_git"]))
+
     # Commit the changes
     conn.commit()
 
@@ -51,10 +53,13 @@ def remove_project_by_path(conn, project_path):
 def directory_exists(conn, project_path):
     cursor = conn.cursor()
     cursor.execute('''
-        SELECT COUNT(*) FROM projects WHERE project_path = ?
+        SELECT EXISTS(
+            SELECT 1
+            FROM projects
+            WHERE project_path = ?
+        )
     ''', (project_path,))
-    count = cursor.fetchone()[0]
-    return count > 0
+    return cursor.fetchone()[0] == 1
 
 
 def fetch_projects(conn):
@@ -68,7 +73,7 @@ def create_db_connection(db_file):
 
 
 def example():
-    connection = sqlite3.connect("database/term_mark.sqlite")
+    connection = sqlite3.connect(os.environ["TM_PATH_DB"])
     create_table(connection)
     connection.close()
 
