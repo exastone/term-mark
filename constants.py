@@ -1,0 +1,2 @@
+TERMINATE = 1
+PROCEED = 0
