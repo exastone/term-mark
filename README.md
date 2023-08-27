@@ -29,13 +29,16 @@ You can now use term-mark with `tm`!
 
 `pip uninstall term-mark`
 
-Delete the shell function
+Delete the shell function:
+
 `rm $HOME/.config/zsh/zsh_functions/tm.zsh`
 
 If you don't have anything else in this directory you can also delete the entire directory:
+
 `rm -r $HOME/.config/zsh/`
 
 Remove the following line from your .zshrc file:
+
 `source "$HOME/.config/zsh/zsh_functions/tm.zsh"`
 
 ## Attribution

@@ -1,9 +1,11 @@
 import os
 import shutil
 import sqlite3
+import sys
 
 from term_mark import schemas
 from term_mark import database as DB, menus, directory_walk as dw
+from term_mark.constants import TERMINATE
 
 
 # Function to check if a table exists and create it if not
@@ -99,8 +101,11 @@ def remove_bookmarks():
             check_and_create_table(conn)  # Check and create table if necessary
 
             term_mark_objects = marshal_term_marks()
-            selected_bookmarks = menus.select_bookmarks(term_mark_objects)
-
+            if len(term_mark_objects) != 0:
+                selected_bookmarks = menus.select_bookmarks(term_mark_objects)
+            else:
+                print("No bookmarks found, bookmark with `tm --mark`")
+                return sys.exit(TERMINATE)
             confirmation = input("Confirm removal? [Y/n] ")
             if confirmation.strip().lower() == 'y':
                 for bookmark in selected_bookmarks:
