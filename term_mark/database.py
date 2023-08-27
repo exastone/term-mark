@@ -2,6 +2,12 @@ import os
 import sqlite3
 
 
+def table_exists(connection, table_name="project"):
+    cursor = connection.cursor()
+    cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}'")
+    return cursor.fetchone() is not None
+
+
 def create_table(conn):
     cursor = conn.cursor()
     cursor.execute('''
