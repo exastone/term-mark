@@ -12,5 +12,6 @@ def parse_args():
     parser.add_argument("--depth", "-L", type=int, default=2, help="Search depth, used with '--find' (default is 2)",
                         metavar="")
     parser.add_argument("--remove", "-R", action="store_true", help="Remove bookmarks menu")
+    parser.add_argument("--init", action="store_true", help="Must be run before using 'tm'")
 
     return parser.parse_args()
