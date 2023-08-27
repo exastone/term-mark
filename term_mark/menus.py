@@ -42,8 +42,12 @@ def select_bookmark_from_fuzzy(objects):
             long_instruction="\n"
         ).execute()
 
-        selected_path = projects[project_selection]
-        write_selected_path_to_file(selected_path)
+        # handles case where user enters search with no matches and hits enter
+        if project_selection is not None:
+            selected_path = projects[project_selection]
+            write_selected_path_to_file(selected_path)
+        else:
+            sys.exit(TERMINATE)
     except KeyboardInterrupt:
         sys.exit(TERMINATE)
 
