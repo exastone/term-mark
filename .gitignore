@@ -124,3 +124,7 @@ dmypy.json
 .pyre/
 
 .idea/
+
+database/term_mark.sqlite
+
+term_mark/term_mark.sqlite
