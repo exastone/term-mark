@@ -1,0 +1,3 @@
+[submodule "term_mark/InquirerPy"]
+	path = term_mark/InquirerPy
+	url = https://github.com/exastone/InquirerPy
