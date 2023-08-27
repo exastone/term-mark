@@ -37,3 +37,10 @@ If you don't have anything else in this directory you can also delete the entire
 
 Remove the following line from your .zshrc file:
 `source "$HOME/.config/zsh/zsh_functions/tm.zsh"`
+
+## Attribution
+
+This CLI tool includes code and components from the [InquirerPy](https://github.com/kazhala/InquirerPy) package created
+by kazhala, specifically a fork from [Gracer](https://github.com/Gracecr/InquirerPy)
+
+InquirerPy is a powerful Python library for creating interactive command-line interfaces.

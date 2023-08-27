@@ -1,8 +1,8 @@
 import os
 import sys
 
-from InquirerPy import inquirer
-from InquirerPy.base.control import Choice
+from term_mark.InquirerPy.InquirerPy import inquirer
+from term_mark.InquirerPy.InquirerPy.base.control import Choice
 
 from term_mark.constants import TERMINATE
 
