@@ -1,4 +1,5 @@
 import os
+import shutil
 import sqlite3
 
 from term_mark import schemas
@@ -109,3 +110,37 @@ def remove_bookmarks():
             conn.commit()
     except sqlite3.Error as e:
         print("Error removing projects:", e)
+
+
+# copies tm.zsh to `$HOME/.config/zsh/zsh_functions`
+# and append `source "$HOME/.config/zsh/zsh_functions/tm.zsh"` to .zshrc
+def init():
+    try:
+        line_to_append = 'source "$HOME/.config/zsh/zsh_functions/tm.zsh"'
+
+        # check if shell function is already sourced to .zshrc
+        zshrc_path = os.path.expanduser('~/.zshrc')
+        line_exists = any(line_to_append in line for line in open(zshrc_path))
+        if not line_exists:
+            # Append line to .zshrc
+            with open(zshrc_path, 'a') as zshrc_file:
+                zshrc_file.write('\n' + line_to_append + '\n')
+
+        # Copy file tm shell function
+        # Get the directory of the calling script
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # Construct source and destination paths
+        source_file = os.path.join(script_dir, "tm.zsh")
+        destination_folder = os.path.expanduser("~/.config/zsh/zsh_functions")
+        destination_file = os.path.join(destination_folder, "tm.zsh")
+
+        if not os.path.exists(destination_folder):
+            os.makedirs(destination_folder)
+
+        if os.path.exists(source_file):
+            shutil.copy(source_file, destination_file)
+        else:
+            print(f"Source file {source_file} does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
