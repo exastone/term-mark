@@ -5,7 +5,7 @@ import sys
 
 from term_mark import schemas
 from term_mark import database as DB, menus, directory_walk as dw
-from term_mark.constants import TERMINATE
+import term_mark.constants as constants
 
 
 # Function to check if a table exists and create it if not
@@ -105,7 +105,7 @@ def remove_bookmarks():
                 selected_bookmarks = menus.select_bookmarks(term_mark_objects)
             else:
                 print("No bookmarks found, bookmark with `tm --mark`")
-                return sys.exit(TERMINATE)
+                return sys.exit(constants.TERMINATE)
             confirmation = input("Confirm removal? [Y/n] ")
             if confirmation.strip().lower() == 'y':
                 for bookmark in selected_bookmarks:
@@ -116,6 +116,14 @@ def remove_bookmarks():
     except sqlite3.Error as e:
         print("Error removing projects:", e)
 
+# Checks if user has 'TM_USE_GLYPHS' set to 'true' or 'false'
+# If not specified, default to using glyphs
+def check_glyphs_enabled():
+    if os.environ.get("TM_USE_GLYPHS") == "true" or None:
+        pass
+    else: # TM_USE_GLYPHS=false
+        constants.MARKER_ENABLED = " ● "
+        constants.MARKER_DISABLED = " ○ "
 
 # copies tm.zsh to `$HOME/.config/zsh/zsh_functions`
 # and append `source "$HOME/.config/zsh/zsh_functions/tm.zsh"` to .zshrc

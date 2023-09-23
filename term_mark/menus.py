@@ -4,8 +4,7 @@ import sys
 from term_mark.InquirerPy.InquirerPy import inquirer
 from term_mark.InquirerPy.InquirerPy.base.control import Choice
 
-from term_mark.constants import TERMINATE
-
+import term_mark.constants as constants
 
 def write_selected_path_to_file(selected_path):
     """Write the selected path to a temporary file."""
@@ -37,7 +36,7 @@ def select_bookmark_from_fuzzy(objects):
             message="",
             qmark="",
             amark="",
-            marker_pl=" ",
+            marker_pl=constants.MARKER_ENABLED,
             choices=choices,
             instruction="[⏎] go to selected | [Ctrl+c] cancel",
             long_instruction="\n"
@@ -48,9 +47,9 @@ def select_bookmark_from_fuzzy(objects):
             selected_path = projects[project_selection]
             write_selected_path_to_file(selected_path)
         else:
-            sys.exit(TERMINATE)
+            sys.exit(constants.TERMINATE)
     except KeyboardInterrupt:
-        sys.exit(TERMINATE)
+        sys.exit(constants.TERMINATE)
 
 
 def select_bookmarks(objects):
@@ -67,14 +66,15 @@ def select_bookmarks(objects):
             message="",
             qmark="",
             amark="",
-            enabled_symbol="",
-            disabled_symbol="",
+             # this is not an error, 'enabled' means selected for removal
+            enabled_symbol=constants.MARKER_DISABLED,
+            disabled_symbol=constants.MARKER_ENABLED,
             instruction="[Space] add to selection | [Ctrl+r] toggle selection all",
             choices=choices,
             vi_mode=True,
             transformer=lambda _: f"{len(_)} bookmark{'s' if len(_) > 1 else ''} selected for removal",
         ).execute()
     except KeyboardInterrupt:
-        sys.exit(TERMINATE)
+        sys.exit(constants.TERMINATE)
 
     return selections

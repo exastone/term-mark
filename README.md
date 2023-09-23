@@ -14,15 +14,26 @@ term-mark which can facilitate directory navigation.
 
 term-mark handles the setup for you, but before you can use `tm` you need to run:
 
-`term-mark --init`
+`term-mark --init` (**not** `'tm'`)
 
-This creates a shell function `tm.zsh` in `$HOME/.config/zsh/zsh_functions` and sources it your .zshrc file.
+This creates a shell function `tm.zsh` in `$HOME/.config/zsh/zsh_functions` and sources it to your .zshrc file.
 
-One last thing: you'll likely need to reload your .zshrc file
+you'll likely need to reload your .zshrc file
 
 `source $HOME/.zshrc`
 
-You can now use term-mark with `tm`!
+You can now use term-mark with `tm` !
+
+### Disable Glyphs
+
+By default, glyphs are used for markers. If your shell doesn't support glyphs or your not using a 
+patched font, you can disable glyphs by setting an environment variable which will use '●' and '○' characters as fallback marker icons.
+
+To disable glyphs:
+
+add `export TM_USE_GLYPHS=false` to your .zshrc file
+
+then run `source ~/.zshrc`
 
 ## Usage
 

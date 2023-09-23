@@ -3,7 +3,13 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["term_mark", "term_mark.InquirerPy.InquirerPy", "term_mark.InquirerPy.InquirerPy.base", "term_mark.InquirerPy.InquirerPy.containers", "term_mark.InquirerPy.InquirerPy.prompts"]
+packages = [
+    "term_mark",
+    "term_mark.InquirerPy.InquirerPy",
+    "term_mark.InquirerPy.InquirerPy.base",
+    "term_mark.InquirerPy.InquirerPy.containers",
+    "term_mark.InquirerPy.InquirerPy.prompts",
+]
 
 [tool.setuptools.package-data]
 term_mark = ["tm.zsh"]
@@ -11,9 +17,7 @@ term_mark = ["tm.zsh"]
 [project]
 name = "term-mark"
 version = "0.1.4"
-authors = [
-    { name = "Andrew Stone" },
-]
+authors = [{ name = "Andrew Stone" }]
 description = "Bookmarks for your terminal"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -22,12 +26,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Topic :: System :: Shells",
+    "Topic :: Terminals",
+    "Topic :: Utilities",
 ]
 
-dependencies = [
-    'pfzy >= 0.3.4',
-    'prompt-toolkit >= 3.0.39'
-]
+dependencies = ['pfzy >= 0.3.4', 'prompt-toolkit >= 3.0.39']
 
 [project.scripts]
 term-mark = "term_mark.main:main"
