@@ -7,8 +7,7 @@ def parse_args():
                                      epilog=MORE_INFO,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
 
-    parser.add_argument("path", nargs="?", type=str, default=".", help="Search path (default '.')")
-    parser.add_argument("--init", action="store_true", help="Must be run before using 'tm'")
+    parser.add_argument("path", nargs="?", type=str, default=".", help="Path/directory (default '.')")
     parser.add_argument("--mark", "-M", action="store_true", help="Toggle bookmark for current directory")
     parser.add_argument("--show", "-S", action="store_true", help="Show bookmarked projects")
     parser.add_argument("--remove", "-R", action="store_true", help="Remove bookmarks menu. Useful for removing multiple bookmarks")

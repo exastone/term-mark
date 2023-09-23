@@ -6,60 +6,53 @@ Bookmark directories to quickly jump to them later, no more tabbing through dire
 
 ## Install
 
-`pip install term-mark`
+> `pip install term-mark`
 
-Because python cannot interact with the terminal outside of the interpeter any directory changes to the terminal will
-revert after the program terminates, to make term-mark work you need to wrap the program execution in a shell function that runs
-term-mark which can facilitate directory navigation.
+A shell function, 'tm.zsh' will be created in `$HOME/.config/zsh/zsh_functions` and appended as a source to your .zshrc file. 
 
-term-mark handles the setup for you, but before you can use `tm` you need to run:
+**You'll likely need to reload your .zshrc file before using `tm`**
 
-`term-mark --init` (**not** `'tm'`)
-
-This creates a shell function `tm.zsh` in `$HOME/.config/zsh/zsh_functions` and sources it to your .zshrc file.
-
-you'll likely need to reload your .zshrc file
-
-`source $HOME/.zshrc`
+> `source $HOME/.zshrc`
 
 You can now use term-mark with `tm` !
 
 ### Disable Glyphs
 
 By default, glyphs are used for markers. If your shell doesn't support glyphs or your not using a 
-patched font, you can disable glyphs by setting an environment variable which will use '●' and '○' characters as fallback marker icons.
-
-To disable glyphs:
+patched font, you can disable glyphs by setting an environment variable which will use '●', '○' characters as fallback marker icons. i.e.
 
 add `export TM_USE_GLYPHS=false` to your .zshrc file
 
-then run `source ~/.zshrc`
+run `source ~/.zshrc`
 
 ## Usage
 
-- Bookmark (toggle) the current directory: `tm -M` or `tm --mark`
-- Show bookmarks: `tm -S` or `tm --show`
-- Remove bookmarks (interactive) menu: `tm -R` or `tm --remove`
+- Bookmark (toggle) the current directory: `tm -M` / `--mark`
+- Show bookmarks: `tm -S` / `--show`
+- Remove bookmarks (interactive) menu: `tm -R` / `--remove`
+    - useful for removing multiple bookmarks at the same time
+
+**Auto-find & Add Bookmarks:**
 
 You can use `tm --find <base dir> [--depth <number>]` to search and add bookmarks for project directories (idenitifed by .git folder) under the base path provided.
 
 e.g. you can run `tm --find ~/dev` (--depth 2 is default)
-to automatically add bookmarks to **AudioVis**, **Bake**, **DSIM** directories
+to automatically add bookmarks to **dirA**, **dirB**, **dirC** directories
 
 ```
 ./dev
-├── AudioVis            [bookmark added for `AudioVis`]
+├── dirA          [bookmark added for `dirA`]
 │   ├── .git            [<- .git found]
 │   └── ...
-├── Bake                [bookmark added for `Bake`]
+├── dirB          [bookmark added for `dirB`]
 │   ├── .git            [<- .git found]
-│   └── ...
-│   ├── src             [bookmark NOT added `/Bake/src`]
+│   ├── ...
+│   ├── src             [bookmark NOT added `/dirB/src`]
 │   |   └── ...
 │   └── .vscode         [bookmark NOT added `.vscode`]
 │       └── ...
 ├── GO
-│   └── DSIM            [bookmark added for `DSIM`]
+│   └── dirC      [bookmark added for `dirC`]
 │       ├── .git        [<- .git found]
 │       ├── .vscode
 |       |   └── ...
@@ -71,20 +64,17 @@ to automatically add bookmarks to **AudioVis**, **Bake**, **DSIM** directories
 
 `pip uninstall term-mark`
 
-Delete the shell function:
-
-`rm $HOME/.config/zsh/zsh_functions/tm.zsh`
-
-If you don't have anything else in this directory you can also delete the entire directory:
-
-`rm -r $HOME/.config/zsh/`
-
 Remove the following line from your .zshrc file:
 
 `source "$HOME/.config/zsh/zsh_functions/tm.zsh"`
 
+Delete the shell function:
+
+`rm $HOME/.config/zsh/zsh_functions/tm.zsh`
+
+
 There's only 2 dependencies for term-mark, `pfzy` and `prompt-toolkit`
-If you're sure these dependencies aren't used by another package you can also pip install these for a completely clean
+If they're not used by another package you can also pip uninstall these for a completely clean
 uninstall.
 
 ## Attribution

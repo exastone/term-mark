@@ -36,7 +36,7 @@ def select_bookmark_from_fuzzy(objects):
             message="",
             qmark="",
             amark="",
-            marker_pl=constants.MARKER_ENABLED,
+            marker_pl=f" {constants.MARKER_ENABLED} ",
             choices=choices,
             instruction="[⏎] go to selected | [Ctrl+c] cancel",
             long_instruction="\n"

@@ -1,7 +1,7 @@
 function tm() {
     # Check if an argument is provided
     if [ -z "$1" ]; then
-        echo "Missing argument. Usage: tm_run <argument>"
+        echo "Missing argument. Usage: tm <argument>"
         return 1
     fi
 

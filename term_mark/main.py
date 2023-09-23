@@ -3,7 +3,7 @@ import sys
 
 from term_mark import menus, cmd_parse
 import term_mark.constants as constants
-from term_mark.tm_functions import discover, marshal_term_marks, toggle_mark, remove_bookmarks, init
+from term_mark.tm_functions import discover, marshal_term_marks, toggle_mark, remove_bookmarks
 from term_mark.tm_functions import check_glyphs_enabled
 
 
@@ -18,8 +18,6 @@ def main():
     # for debug
     # print(f"args {args}")
 
-    if args.init:
-        init()
     if args.find:
         absolute_path = os.path.abspath(args.path)
         discover(base_search_dir=absolute_path, max_results=50, include_hidden=False, max_search_depth=args.depth)

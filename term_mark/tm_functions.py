@@ -119,41 +119,46 @@ def remove_bookmarks():
 # Checks if user has 'TM_USE_GLYPHS' set to 'true' or 'false'
 # If not specified, default to using glyphs
 def check_glyphs_enabled():
-    if os.environ.get("TM_USE_GLYPHS") == "true" or None:
+    if os.environ.get("TM_USE_GLYPHS") == None:
+        # use "" ""
         pass
-    else: # TM_USE_GLYPHS=false
-        constants.MARKER_ENABLED = " ● "
-        constants.MARKER_DISABLED = " ○ "
+    if os.environ.get("TM_USE_GLYPHS") == "true":
+        # use "" ""
+        pass
+    if os.environ.get("TM_USE_GLYPHS") == "false":
+        constants.MARKER_ENABLED = "●"
+        constants.MARKER_DISABLED = "○"
 
+# [!] This function is now handled by setup.py
 # copies tm.zsh to `$HOME/.config/zsh/zsh_functions`
 # and append `source "$HOME/.config/zsh/zsh_functions/tm.zsh"` to .zshrc
-def init():
-    try:
-        line_to_append = 'source "$HOME/.config/zsh/zsh_functions/tm.zsh"'
+# def init():
+#     try:
+#         line_to_append = 'source "$HOME/.config/zsh/zsh_functions/tm.zsh"'
 
-        # check if shell function is already sourced to .zshrc
-        zshrc_path = os.path.expanduser('~/.zshrc')
-        line_exists = any(line_to_append in line for line in open(zshrc_path))
-        if not line_exists:
-            # Append line to .zshrc
-            with open(zshrc_path, 'a') as zshrc_file:
-                zshrc_file.write('\n' + line_to_append + '\n')
+#         # check if shell function is already sourced to .zshrc
+#         zshrc_path = os.path.expanduser('~/.zshrc')
+#         line_exists = any(line_to_append in line for line in open(zshrc_path))
+#         if not line_exists:
+#             # Append line to .zshrc
+#             with open(zshrc_path, 'a') as zshrc_file:
+#                 zshrc_file.write('\n' + line_to_append + '\n')
 
-        # Copy file tm shell function
-        # Get the directory of the calling script
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+#         # Copy file tm shell function
+#         # Get the directory of the calling script
+#         script_dir = os.path.dirname(os.path.abspath(__file__))
 
-        # Construct source and destination paths
-        source_file = os.path.join(script_dir, "tm.zsh")
-        destination_folder = os.path.expanduser("~/.config/zsh/zsh_functions")
-        destination_file = os.path.join(destination_folder, "tm.zsh")
+#         # Construct source and destination paths
+#         source_file = os.path.join(script_dir, "tm.zsh")
+#         destination_folder = os.path.expanduser("~/.config/zsh/zsh_functions")
+#         destination_file = os.path.join(destination_folder, "tm.zsh")
 
-        if not os.path.exists(destination_folder):
-            os.makedirs(destination_folder)
+#         if not os.path.exists(destination_folder):
+#             os.makedirs(destination_folder)
 
-        if os.path.exists(source_file):
-            shutil.copy(source_file, destination_file)
-        else:
-            print(f"Source file {source_file} does not exist.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+#         if os.path.exists(source_file):
+#             shutil.copy(source_file, destination_file)
+#         else:
+#             print(f"Source file {source_file} does not exist.")
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
