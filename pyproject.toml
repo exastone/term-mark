@@ -16,7 +16,7 @@ term_mark = ["tm.zsh"]
 
 [project]
 name = "term-mark"
-version = "0.1.4"
+version = "0.1.5"
 authors = [{ name = "Andrew Stone" }]
 description = "Bookmarks for your terminal"
 readme = "README.md"
