@@ -33,6 +33,7 @@ def select_bookmark_from_fuzzy(objects):
 
     try:
         project_selection = inquirer.fuzzy(
+            mandatory=False,
             message="",
             qmark="",
             amark="",
@@ -62,6 +63,7 @@ def select_bookmarks(objects):
 
     try:
         selections = inquirer.checkbox(
+            mandatory=False,
             message="",
             qmark="",
             amark="",
