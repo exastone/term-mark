@@ -2,11 +2,14 @@ import argparse
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(prog="\033[32mtm\033[0m",
-                                     description="\033[34m  Term-mark, bookmarks for your terminal  \033[0m",
-                                     epilog=MORE_INFO,
-                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        prog="\033[32mtm\033[0m",
+        description=DESCRIPTION,
+        epilog=MORE_INFO,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
 
+    parser.add_argument("--init", action="store_true", help="Must be run before using 'tm'!")
     parser.add_argument("path", nargs="?", type=str, default=".", help="Path/directory (default '.')")
     parser.add_argument("--mark", "-M", action="store_true", help="Toggle bookmark for current directory")
     parser.add_argument("--show", "-S", action="store_true", help="Show bookmarked projects")
@@ -16,6 +19,11 @@ def parse_args():
                         metavar="")
 
     return parser.parse_args()
+
+DESCRIPTION="""
+\033[34m  Term-mark, bookmarks for your terminal  \033[0m
+Be sure to run `term-mark --init` and reload your .zshrc before using 'tm'!
+"""
 
 MORE_INFO = """
 Note: By default, glyphs are used as markers. If your shell doesn't support glyphs or your not using a 
