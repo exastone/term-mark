@@ -8,13 +8,15 @@ Bookmark directories to quickly jump to them later, no more tabbing through dire
 
 > `pip install term-mark`
 
+> `term-mark --init`
+
 A shell function, 'tm.zsh' will be created in `$HOME/.config/zsh/zsh_functions` and appended as a source to your .zshrc file. 
 
 **You'll likely need to reload your .zshrc file before using `tm`**
 
 > `source $HOME/.zshrc`
 
-You can now use term-mark with `tm` !
+You can now use term-mark with `'tm'` !
 
 ### Disable Glyphs
 
